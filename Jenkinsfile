@@ -56,7 +56,6 @@ def linkFunctional = "$baseReport/$testReportFileName"
 
 
 node {
-    try {
         stage('Check out Code, Prepare environment') {
             parallel (
                 "getEnvironment":{
@@ -132,8 +131,4 @@ node {
                 }
             ) 
         }
-	    
-        finally {
-            sh 'echo "Success"'
     }
-}
