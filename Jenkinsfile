@@ -53,51 +53,9 @@ def linkSonar = "http://10.2.131.162:9000/sonar/overview?id=7"
 def baseReport = "http://reports.{url}"
 def linkFunctional = "$baseReport/$testReportFileName"
 
-def s3Upload(Boolean gzip, String bucket, String sourceFile){
-    step([
-                        $class: 'S3BucketPublisher',
-                        consoleLogLevel: 'INFO',
-                        dontWaitForConcurrentBuildCompletion: true,
-                        entries: [
-                            [
-                                bucket: bucket,
-                                excludedFile: '',
-                                flatten: false,
-                                gzipFiles: gzip,
-                                keepForever: false,
-                                managedArtifacts: false,
-                                noUploadOnFailure: true,
-                                selectedRegion: 'us-east-1',
-                                showDirectlyInBrowser: false,
-                                sourceFile: sourceFile,
-                                storageClass: 'REDUCED_REDUNDANCY',
-                                uploadFromSlave: false,
-                                useServerSideEncryption: false
-                                ]
-                            ],
-                            pluginFailureResultConstraint: 'FAILURE',
-                            profileName: 'whirlpool',
-                            userMetadata: []])
-}
-
-  
-void buildFunctionalReport(String testReportFileName, String BUILD_TAG, String BUILD_URL ){
-    def binding
-    s3Upload(false, 'reports.{URL}', "features/report/*.html" )
-}
 
 
 node {
-    withEnv(["PATH+NODE=${tool name: 'node6', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'}/bin"]) {
-
-        if (branchname == "master" || branchname == "develop") {
-            promote = true
-            if (branchname == "master") {
-                bucket = ''
-                targetEnv = 'production'
-            }
-        }
-
     try {
         stage('Check out Code, Prepare environment') {
             parallel (
@@ -174,3 +132,4 @@ node {
                 }
             ) 
         }
+    }
