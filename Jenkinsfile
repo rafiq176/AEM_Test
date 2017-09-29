@@ -1,8 +1,8 @@
-def projectName = 'Whirlpool AEM'
+def projectName = 'AEM'
 def bucket = 'dev.{URL}'
 def targetEnv = 'dev'
 def branchname = env.BRANCH_NAME
-def pipelineView = "http://10.2.131.162:8080/job/Whirlpool-AEM/job/aem/view/change-requests/job/$env.BRANCH_NAME/";
+def pipelineView = ""
 
 def gzip = true
 def promote = false
@@ -45,13 +45,13 @@ def prodPublisher2 = "" //For Use when there are additional prod publishers
 def prodPublisher3 = "" //For Use when there are additional prod publishers
 
 // application Support
-def bitBucketProj = 'WHIR'
+def bitBucketProj = 'AEM'
 def bitBucketRepo = 'aem'
-def linkNexus = "http://10.2.131.162:8081"
-def linkBitBucket = "https://bitbucket.whirlpoolcorp.com/projects/$bitBucketProj/repos/$bitBucketRepo/pull-requests/$prNumber/overview"
-def linkSonar = "http://10.2.131.162:9000/sonar/overview?id=7"
-def baseReport = "http://reports.{url}"
-def linkFunctional = "$baseReport/$testReportFileName"
+def linkNexus = ""
+def linkBitBucket = ""
+def linkSonar = ""
+def baseReport = ""
+def linkFunctional = ""
 
 
 
