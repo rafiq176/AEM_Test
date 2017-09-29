@@ -96,8 +96,8 @@ node {
         }
         stage('Build AEM UI PreBuild Tasks') {
                     try {
-					sh "cd .."
-					sh "cd whirlpool/whirlpool-ui"
+		    sh "cd .."
+		    sh "cd whirlpool/whirlpool-ui"
                     sh "npm install -g grunt"                     
                     sh "npm install -g grunt-scss-lint"
                     sh "npm install -g grunt-cli"
@@ -133,3 +133,4 @@ node {
             ) 
         }
     }
+}
