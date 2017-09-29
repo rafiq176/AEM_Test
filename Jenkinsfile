@@ -1,4 +1,4 @@
-me = 'Whirlpool AEM'
+def projectName = 'Whirlpool AEM'
 def bucket = 'dev.{URL}'
 def targetEnv = 'dev'
 def branchname = env.BRANCH_NAME
@@ -132,5 +132,8 @@ node {
                 }
             ) 
         }
+	    
+        finally {
+            sh 'echo "Success"'
     }
 }
