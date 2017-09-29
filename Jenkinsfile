@@ -55,7 +55,6 @@ def linkFunctional = ""
 
 
 
-node {
         stage('Check out Code, Prepare environment') {
             parallel (
                 "getEnvironment":{
@@ -131,4 +130,3 @@ node {
                 }
             ) 
         }
-    }
